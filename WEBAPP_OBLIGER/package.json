@@ -1,0 +1,23 @@
+{
+  "name": "webapp-obliger",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev:frontend": "vite",
+    "dev:server": "tsx --watch server.ts",
+    "dev": "concurrently -n frontend,server -c green,blue \"npm run dev:frontend\" \"npm run dev:server\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.12.2",
+    "@types/node": "^22.5.0",
+    "hono": "^4.5.9",
+    "zod": "^3.23.8"
+  }
+}
