@@ -3,7 +3,7 @@ import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { serveStatic } from "@hono/node-server/serve-static";
-import fs from 'node:fs/promises'
+import fs from 'node:fs/promises';
 
 
 // Oppretter en ny Hono-applikasjon

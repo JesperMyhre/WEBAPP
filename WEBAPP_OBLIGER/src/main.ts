@@ -3,16 +3,27 @@ import { z } from 'zod';
 import { ProjectArraySchema, type Project } from './types';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <h1>Hello world</h1>
-  <form id="projectForm">
-    <input name="title">
-    <input name="body">
-    <input name="url">
-    <input type="submit">
-  </form>
-  <ul id="projectList">
+  <h1>Jesper's Portfolio</h1>
 
+  <h2>Litt om meg</h2>
+  <p>Jeg er en student som studerer Digitale Medier og Design ved Høgskolen i Østfold.</p>
+
+  <h3>Kvalifikasjoner</h3>
+  <ul>
+  <li>HTML & CSS</li>
+  <li>React (JSX & TSX)</li>
   </ul>
+
+  <h3>Legg inn prosjekter</h3>
+  <form id="projectForm">
+    <input name="title" placeholder="Prosjekt-tittel">
+    <input name="body" placeholder="Beskrivelse av prosjekt">
+    <input name="url" placeholder="Github URL">
+    <input type="submit" value="Send inn">
+  </form>
+
+  <h3>Prosjekter</h3>
+  <section id="projectList"></section>
 `
 
 const form = document.getElementById("projectForm") as HTMLFormElement;
@@ -53,9 +64,9 @@ form.addEventListener("submit", async (event: SubmitEvent) => {
     });
 
     if (response.status === 201) {
-      console.log("Vane lagret på serveren");
+      console.log("Prosjekt lagret på serveren");
     } else {
-      console.error("Feil ved lagring av vane på serveren");
+      console.error("Feil ved lagring av prosjekt på serveren");
     }
   } catch (error) {
     console.error("Feil ved sending av data til serveren:", error);
@@ -68,8 +79,10 @@ function updateProjectsList() {
   projectList.innerHTML = "";
 
   for (const project of projects) {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = `${project.title} ${project.body} <a href="${project.url}">${project.url}</a>`;
+    const listItem = document.createElement("article");
+    listItem.innerHTML = `<h2>${project.title}</h2>
+                          <p>${project.body}</p>
+                          <a href="${project.url}" target="_blank">View</a>`;
     projectList.appendChild(listItem);
   }
 }
