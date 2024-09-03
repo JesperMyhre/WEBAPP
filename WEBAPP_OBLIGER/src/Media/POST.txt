@@ -1,0 +1,14 @@
+sequenceDiagram
+  participant Frontend
+  participant Server
+  participant JSON File
+    Note over Frontend,Server: Nytt prosjekt
+    Frontend->>Frontend: Submitskjema
+    Frontend->>Server: POST
+    Server->>JSON File: Les eksisterende data
+    JSON File-->>Server: Eksisterende data
+    Server->>Server: Legg til ny data
+    Server->>JSON File: Skriv oppdatert data
+    JSON File-->>Server: Bekreft skriving
+    Server-->>Frontend: Returnerer oppdatert data
+    Frontend->>Frontend: Oppdater visning

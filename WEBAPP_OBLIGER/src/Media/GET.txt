@@ -1,0 +1,13 @@
+sequenceDiagram
+  participant Frontend
+  participant Server
+  participant JSON File
+    Frontend->>JSON File: Fetch JSON
+    JSON File-->>Frontend: JSON data
+    Frontend->>Frontend: Viser data i Frontend
+    Note over Frontend,Server: API-lastning
+    Frontend->>Server: GET
+    Server->>JSON File: Les fra JSON Fil
+    JSON File->>Server: JSON Data
+    Server->>Frontend: API-respons
+    Frontend->>Frontend: Vis data fra API

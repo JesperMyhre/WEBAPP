@@ -11,6 +11,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <h3>Kvalifikasjoner</h3>
   <ul>
   <li>HTML & CSS</li>
+  <li>Javascript</li>
   <li>React (JSX & TSX)</li>
   </ul>
 
@@ -94,7 +95,7 @@ function loadFromApi() {
       try {
         const validatedProjects = ProjectArraySchema.parse(data);
 
-        projects.push(...validatedProjects); // Legger til validerte vaner i den interne listen
+        projects.push(...validatedProjects);
         updateProjectsList();
       } catch (error) {
         if (error instanceof z.ZodError) {
